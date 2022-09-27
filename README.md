@@ -1,5 +1,9 @@
 # cooking-app-android
 
+## 계획서
+
+     https://www.notion.so/cooking-app-android-ad7546e197f1407b97e980eea0268399?showMoveTo=true
+
 ## 기본 세팅
 
      1. cooking-app-android 저장소 Fork
