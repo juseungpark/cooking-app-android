@@ -4,6 +4,10 @@
 
      https://www.notion.so/cooking-app-android-ad7546e197f1407b97e980eea0268399?showMoveTo=true
 
+## 사용 API
+
+     http://www.foodsafetykorea.go.kr/api/openApiInfo.do?menu_grp=MENU_GRP31&menu_no=661&show_cnt=10&start_idx=1&svc_no=COOKRCP01
+
 ## 기본 세팅
 
      1. cooking-app-android 저장소 Fork
