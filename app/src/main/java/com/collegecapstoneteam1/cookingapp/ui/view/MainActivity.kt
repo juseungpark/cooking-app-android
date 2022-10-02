@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
+
     }
 
     private fun setupBottomNavigationView() {

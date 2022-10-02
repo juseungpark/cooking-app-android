@@ -32,6 +32,22 @@ class MainViewModel(
             Log.d(TAG, response.message())
         }
     }
+
+    fun searchRecipesList(
+        startIdx: Int,
+        endIdx: Int,
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        val response = bookSearchRepository.searchRecipesList(startIdx, endIdx)
+        if (response.isSuccessful) {
+            response.body()?.let { body ->
+                _searchResult.postValue(body)
+            }
+        } else {
+            Log.d(TAG, "searchBooks: response.isNotSuccessful")
+            Log.d(TAG, response.message())
+        }
+    }
+
     companion object{
         private const val TAG = "MainViewModel"
     }
