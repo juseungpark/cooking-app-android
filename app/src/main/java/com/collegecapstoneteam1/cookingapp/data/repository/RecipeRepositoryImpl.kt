@@ -5,9 +5,9 @@ import com.collegecapstoneteam1.cookingapp.data.api.RetrofitInstance
 import com.collegecapstoneteam1.cookingapp.data.model.SearchResponse
 import retrofit2.Response
 
-class RecipeRepositoryImpl: RecipeRepository {
+class RecipeRepositoryImpl : RecipeRepository {
     override suspend fun searchRecipesList(startIdx: Int, endIdx: Int): Response<SearchResponse> {
-        return  RetrofitInstance.api.searchRecipesList(startIdx, endIdx)
+        return RetrofitInstance.api.searchRecipesList(startIdx, endIdx)
     }
 
     override suspend fun searchRecipes(
@@ -16,7 +16,7 @@ class RecipeRepositoryImpl: RecipeRepository {
         recipeName: String,
         recipeDetail: String
     ): Response<SearchResponse> {
-        return  RetrofitInstance.api.searchRecipes(startIdx, endIdx, recipeName, recipeDetail)
+        return RetrofitInstance.api.searchRecipes(startIdx, endIdx, recipeName, recipeDetail)
     }
 
 

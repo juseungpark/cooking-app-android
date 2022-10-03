@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.collegecapstoneteam1.cookingapp.R
 import com.collegecapstoneteam1.cookingapp.databinding.FragmentFavoriteBinding
-import com.collegecapstoneteam1.cookingapp.databinding.FragmentSearchBinding
 
 
 class FavoriteFragment : Fragment() {

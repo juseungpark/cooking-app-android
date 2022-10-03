@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+
     private val recipeRepositoryImpl = RecipeRepositoryImpl()
     private val factory = MainViewModelProviderFactory(recipeRepositoryImpl)
-    private val viewModel : MainViewModel by viewModels { factory }
+    val viewModel: MainViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

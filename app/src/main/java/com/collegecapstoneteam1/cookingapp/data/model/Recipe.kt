@@ -3,7 +3,7 @@ package com.collegecapstoneteam1.cookingapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Row(
+data class Recipe(
     @SerializedName("ATT_FILE_NO_MAIN")
     val aTTFILENOMAIN: String,
     @SerializedName("ATT_FILE_NO_MK")

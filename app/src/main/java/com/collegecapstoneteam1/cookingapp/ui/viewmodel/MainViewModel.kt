@@ -15,6 +15,16 @@ class MainViewModel(
 ) : ViewModel() {
     private val _searchResult = MutableLiveData<SearchResponse>()
     val searchResult: LiveData<SearchResponse> get() = _searchResult
+    private var startNum = 1
+
+
+    fun addNum() {
+        startNum += 5
+    }
+
+    fun decreaseNum() {
+        if (startNum != 1) startNum -= 5
+    }
 
     fun searchRecipes(
         startIdx: Int,
@@ -22,7 +32,8 @@ class MainViewModel(
         recipeName: String,
         recipeDetail: String
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val response = bookSearchRepository.searchRecipes(startIdx, endIdx, recipeName, recipeDetail)
+        val response =
+            bookSearchRepository.searchRecipes(startIdx, endIdx, recipeName, recipeDetail)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
@@ -34,10 +45,8 @@ class MainViewModel(
     }
 
     fun searchRecipesList(
-        startIdx: Int,
-        endIdx: Int,
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val response = bookSearchRepository.searchRecipesList(startIdx, endIdx)
+        val response = bookSearchRepository.searchRecipesList(startNum, startNum + 4)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
@@ -48,7 +57,7 @@ class MainViewModel(
         }
     }
 
-    companion object{
+    companion object {
         private const val TAG = "MainViewModel"
     }
 
