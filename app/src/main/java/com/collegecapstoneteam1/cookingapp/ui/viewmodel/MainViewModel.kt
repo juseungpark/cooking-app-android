@@ -5,9 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.collegecapstoneteam1.cookingapp.data.model.Recipe
 import com.collegecapstoneteam1.cookingapp.data.model.SearchResponse
 import com.collegecapstoneteam1.cookingapp.data.repository.RecipeRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -54,6 +60,18 @@ class MainViewModel(
         } else {
             Log.d(TAG, "searchBooks: response.isNotSuccessful")
             Log.d(TAG, response.message())
+        }
+    }
+    private val _serchPagingResult = MutableStateFlow<PagingData<Recipe>>(PagingData.empty())
+    val searchPagingResult: StateFlow<PagingData<Recipe>> = _serchPagingResult.asStateFlow()
+
+    fun searchCookingsPaging(RCP_SEQ: Int){
+        viewModelScope.launch {
+            bookSearchRepository.searchcookingPaging(RCP_SEQ)
+                .cachedIn(viewModelScope)
+                .collect {
+                    _serchPagingResult.value = it
+                }
         }
     }
 

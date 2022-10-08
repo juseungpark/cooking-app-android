@@ -1,6 +1,9 @@
 package com.collegecapstoneteam1.cookingapp.data.repository
 
+import androidx.paging.PagingData
+import com.collegecapstoneteam1.cookingapp.data.model.Recipe
 import com.collegecapstoneteam1.cookingapp.data.model.SearchResponse
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface RecipeRepository {
@@ -16,5 +19,5 @@ interface RecipeRepository {
         recipeDetail: String
     ): Response<SearchResponse>
 
-
+    fun searchcookingPaging(RCP_SEQ : Int): Flow<PagingData<Recipe>>
 }
