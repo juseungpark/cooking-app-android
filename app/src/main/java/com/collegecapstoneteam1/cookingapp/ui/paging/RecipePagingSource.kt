@@ -22,7 +22,7 @@ class RecipePagingSource(
         return try {
 
             val pageNumber = params.key ?: STARTING_PAGE_INDEX
-            val response = api.searchRecipesList(pageNumber, pageNumber+ 20)
+            val response = api.searchRecipesList(pageNumber, pageNumber+ 5)
 
             val data = response.body()?.cOOKRCP01?.recipes!!
             val prevKey = if (pageNumber == STARTING_PAGE_INDEX) null else pageNumber -1
