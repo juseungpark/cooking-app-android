@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupJetpackNavigation()
+
         if (savedInstanceState == null) {
             binding.bottomNavigationView.selectedItemId = R.id.fragment_search
         }
@@ -37,36 +38,11 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
     }
+
     private fun setupJetpackNavigation(){
         val host = supportFragmentManager
             .findFragmentById(R.id.cookingsearch_nav_host_fragment) as NavHostFragment? ?: return
         navController = host.navController
         binding.bottomNavigationView.setupWithNavController(navController)
     }
-
-//    private fun setupBottomNavigationView() {
-//        binding.bottomNavigationView.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.fragment_search -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.frame_layout, SearchFragment())
-//                        .commit()
-//                    true
-//                }
-//                R.id.fragment_favorite -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.frame_layout, FavoriteFragment())
-//                        .commit()
-//                    true
-//                }
-//                R.id.fragment_settings -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.frame_layout, SettingsFragment())
-//                        .commit()
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-//    }
 }
