@@ -14,6 +14,7 @@ import com.collegecapstoneteam1.cookingapp.data.model.Recipe
 import com.collegecapstoneteam1.cookingapp.databinding.FragmentSearchBinding
 import com.collegecapstoneteam1.cookingapp.ui.adapter.RecipeAdapter
 import com.collegecapstoneteam1.cookingapp.ui.viewmodel.MainViewModel
+import com.collegecapstoneteam1.cookingapp.util.collectLatestStateFlow
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -35,18 +36,21 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-        viewModel.searchResult.observe(viewLifecycleOwner) { response ->
-            val recipes = response.cOOKRCP01.recipes
-            recipeAdapter.submitList(recipes)
-        }
+//        viewModel.searchResult.observe(viewLifecycleOwner) { response ->
+//            val recipes = response.cOOKRCP01.recipes
+//            recipeAdapter.submitList(recipes)
+//        }
         binding.btnLeftsearch.setOnClickListener {
             viewModel.decreaseNum()
         }
         binding.btnSearch.setOnClickListener {
-            viewModel.searchRecipesList()
+            viewModel.searchCookingsPaging(100)
         }
         binding.btnRightsearch.setOnClickListener {
             viewModel.addNum()
+        }
+        collectLatestStateFlow(viewModel.searchPagingResult) {
+            recipeAdapter.submitData(it)
         }
     }
 
