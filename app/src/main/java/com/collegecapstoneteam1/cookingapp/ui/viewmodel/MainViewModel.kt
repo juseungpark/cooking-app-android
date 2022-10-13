@@ -35,11 +35,10 @@ class MainViewModel(
     fun searchRecipes(
         startIdx: Int,
         endIdx: Int,
-        recipeName: String,
-        recipeDetail: String
+        recipeName: String
     ) = viewModelScope.launch(Dispatchers.IO) {
         val response =
-            bookSearchRepository.searchRecipes(startIdx, endIdx, recipeName, recipeDetail)
+            bookSearchRepository.searchRecipes(startIdx, endIdx, recipeName)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
@@ -65,9 +64,11 @@ class MainViewModel(
     private val _serchPagingResult = MutableStateFlow<PagingData<Recipe>>(PagingData.empty())
     val searchPagingResult: StateFlow<PagingData<Recipe>> = _serchPagingResult.asStateFlow()
 
-    fun searchCookingsPaging(RCP_SEQ: Int){
+
+    //레시피 이름으로 검색하기 위한 페이징 뷰모델
+    fun searchCookingsPaging(RCP_NM: String){
         viewModelScope.launch {
-            bookSearchRepository.searchcookingPaging(RCP_SEQ)
+            bookSearchRepository.searchcookingPaging(RCP_NM)
                 .cachedIn(viewModelScope)
                 .collect {
                     _serchPagingResult.value = it
