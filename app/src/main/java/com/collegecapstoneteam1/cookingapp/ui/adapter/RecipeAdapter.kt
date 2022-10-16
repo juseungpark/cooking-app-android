@@ -16,7 +16,7 @@ import com.collegecapstoneteam1.cookingapp.data.model.Recipe
 import com.collegecapstoneteam1.cookingapp.databinding.ItemRecipePreviewBinding
 
 
-class RecipeAdapter : PagingDataAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(BookDiffCallback) {
+class RecipeAdapter : PagingDataAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(RecipeDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         return RecipeViewHolder(
@@ -57,7 +57,7 @@ class RecipeAdapter : PagingDataAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(
 
             val pos = absoluteAdapterPosition
             itemView.setOnClickListener {
-                Log.d("TAG", "bind: $pos")
+                Log.d(TAG, "bind: $pos")
             }
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
@@ -76,7 +76,9 @@ class RecipeAdapter : PagingDataAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(
                 .into(view)
         }
 
-        private val BookDiffCallback = object : DiffUtil.ItemCallback<Recipe>() {
+        private const val TAG = "RecipeAdapter"
+
+        private val RecipeDiffCallback = object : DiffUtil.ItemCallback<Recipe>() {
             override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
                 return oldItem.rCPSEQ == newItem.rCPSEQ
             }

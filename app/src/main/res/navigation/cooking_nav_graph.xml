@@ -15,5 +15,21 @@
     <fragment
         android:id="@+id/fragment_search"
         android:name="com.collegecapstoneteam1.cookingapp.ui.view.SearchFragment"
-        android:label="@string/search" />
+        android:label="@string/search" >
+        <action
+            android:id="@+id/action_fragment_search_to_detailFragment"
+            app:destination="@id/fragment_detail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_detail"
+        android:name="com.collegecapstoneteam1.cookingapp.ui.view.DetailFragment"
+        android:label="recipe">
+        <argument
+            android:name="recipe"
+            app:argType="com.collegecapstoneteam1.cookingapp.data.model.Recipe" />
+    </fragment>
 </navigation>
