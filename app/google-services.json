@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "845968429936",
+    "project_id": "ecorecipes-5f00b",
+    "storage_bucket": "ecorecipes-5f00b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845968429936:android:e8b10d1071a0a2c1ceb5b5",
+        "android_client_info": {
+          "package_name": "com.collegecapstoneteam1.cookingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845968429936-ic1sgsmkvlil3a60urn97631hsv9h0so.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collegecapstoneteam1.cookingapp",
+            "certificate_hash": "90db122e9437fbafa1125bbfc3358fc4d9d1e1a4"
+          }
+        },
+        {
+          "client_id": "845968429936-6ldkh0c42cmo1qf4rmh4bvng588ev1er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfCUA5r7Dy5D8Voqw-AJYMxVWjCwvhSy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845968429936-6ldkh0c42cmo1qf4rmh4bvng588ev1er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
