@@ -34,7 +34,6 @@ class StartActivity : AppCompatActivity() {
         FirebaseAuth.getInstance()
     }
 
-    private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     // Google 로그인 옵션 구성
     private val googleSignInOptions: GoogleSignInOptions by lazy {
@@ -81,6 +80,10 @@ class StartActivity : AppCompatActivity() {
             tvSignup.paintFlags = Paint.UNDERLINE_TEXT_FLAG
             tvSignup.setOnClickListener {
                 regEmail(email.toString(), pw.toString())
+            }
+
+            btnLogout.setOnClickListener {
+                signOut()
             }
         }
         // 로그인
@@ -150,8 +153,9 @@ class StartActivity : AppCompatActivity() {
         // Firebase sign out
         auth.signOut()
         // Google sign out
-        googleSignInClient.signOut().addOnCompleteListener(this@StartActivity) {
-            //updateUI(null)
+
+        googleSignClient.signOut().addOnCompleteListener(this@StartActivity) {
+            Toast.makeText(this@StartActivity, "로그아웃", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -159,7 +163,7 @@ class StartActivity : AppCompatActivity() {
     private fun revokeAccess() {
         // Firebase sign out
         auth.signOut()
-        googleSignInClient.revokeAccess().addOnCompleteListener(this@StartActivity) {
+        googleSignClient.revokeAccess().addOnCompleteListener(this@StartActivity) {
 
         }
     }
