@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.collegecapstoneteam1.cookingapp.R
@@ -105,7 +106,9 @@ class SearchFragment : Fragment() {
 
             recipeAdapter.setOnItemClickListener( object :RecipeAdapter.OnItemClickListener{
                 override fun onItemClick(v: View, recipe: Recipe, pos: Int) {
-                    Toast.makeText(context,recipe.rCPNM,Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context,recipe.rCPNM,Toast.LENGTH_SHORT).show()
+                    val action = SearchFragmentDirections.actionFragmentSearchToDetailFragment(recipe)
+                    findNavController().navigate(action)
                 }
             })
             adapter = recipeAdapter
