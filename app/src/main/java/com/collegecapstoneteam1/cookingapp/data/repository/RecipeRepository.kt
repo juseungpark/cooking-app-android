@@ -16,8 +16,7 @@ interface RecipeRepository {
         startIdx: Int,
         endIdx: Int,
         recipeName: String,
-        recipeDetail: String
     ): Response<SearchResponse>
 
-    fun searchcookingPaging(RCP_SEQ : Int): Flow<PagingData<Recipe>>
+    fun searchcookingPaging(RCP_NM : String): Flow<PagingData<Recipe>>
 }

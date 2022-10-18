@@ -12,39 +12,30 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".ui.view.SearchFragment">
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            android:padding="4dp"
+            android:hint="Search..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/btn_leftsearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="left" />
-
-            <Button
-                android:id="@+id/btn_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="search" />
-
-            <Button
-                android:id="@+id/btn_rightsearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="right" />
-        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_search_24"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_result"
@@ -54,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@id/tl_search" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
