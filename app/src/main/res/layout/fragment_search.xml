@@ -12,30 +12,26 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".ui.view.SearchFragment">
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tl_search"
+
+        <EditText
+            android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:endIconMode="clear_text"
-            android:padding="4dp"
-            android:hint="Search..."
-            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textAutoComplete"
+            app:layout_constraintEnd_toStartOf="@id/btn_search"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textAutoComplete"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="검 색"
             android:src="@drawable/ic_search_24"
-            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/et_search"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_result"
@@ -45,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tl_search" />
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
