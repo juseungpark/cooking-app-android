@@ -19,4 +19,11 @@ interface RecipeRepository {
     ): Response<SearchResponse>
 
     fun searchcookingPaging(RCP_NM : String): Flow<PagingData<Recipe>>
+
+    // Room
+    suspend fun insertRecipe(recipe: Recipe)
+
+    suspend fun deleteRecipe(recipe: Recipe)
+
+    fun getFavoriteRecipes(): Flow<List<Recipe>>
 }

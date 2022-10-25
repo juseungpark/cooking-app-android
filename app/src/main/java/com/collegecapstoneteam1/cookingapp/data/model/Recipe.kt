@@ -2,11 +2,15 @@ package com.collegecapstoneteam1.cookingapp.data.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import retrofit2.http.GET
 
 
 @Parcelize
+@Entity(tableName = "recipes")
 data class Recipe(
     @SerializedName("ATT_FILE_NO_MAIN")
     val aTTFILENOMAIN: String,
@@ -26,6 +30,9 @@ data class Recipe(
     val iNFOPRO: String,
     @SerializedName("INFO_WGT")
     val iNFOWGT: String,
+
+    // MANUAL_TEXT
+
     @SerializedName("MANUAL01")
     val mANUAL01: String,
     @SerializedName("MANUAL02")
@@ -66,6 +73,9 @@ data class Recipe(
     val mANUAL19: String,
     @SerializedName("MANUAL20")
     val mANUAL20: String,
+
+    // MANUAL_IMG
+
     @SerializedName("MANUAL_IMG01")
     val mANUALIMG01: String,
     @SerializedName("MANUAL_IMG02")
@@ -106,16 +116,20 @@ data class Recipe(
     val mANUALIMG19: String,
     @SerializedName("MANUAL_IMG20")
     val mANUALIMG20: String,
+
     @SerializedName("RCP_NM")
     val rCPNM: String,
     @SerializedName("RCP_PARTS_DTLS")
     val rCPPARTSDTLS: String,
     @SerializedName("RCP_PAT2")
     val rCPPAT2: String,
+
+    @PrimaryKey(autoGenerate = false)
     @SerializedName("RCP_SEQ")
     val rCPSEQ: String,
+
     @SerializedName("RCP_WAY2")
-    val rCPWAY2: String
+    val rCPWAY2: String,
 ) : Parcelable {
     fun getDetailList() : List<Detail>{
         val size = getDetailSize()
