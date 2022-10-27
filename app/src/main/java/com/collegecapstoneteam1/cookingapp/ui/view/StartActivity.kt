@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 
 class StartActivity : AppCompatActivity() {
     private var _binding: ActivityStartBinding? = null
@@ -47,6 +48,14 @@ class StartActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        FirebaseMessaging.getInstance()
+            .token
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Log.d("@@",task.result)
+                }
+            }
+
         super.onCreate(savedInstanceState)
         _binding =
             DataBindingUtil.setContentView(this@StartActivity, R.layout.activity_start)
