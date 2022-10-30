@@ -1,7 +1,6 @@
 package com.collegecapstoneteam1.cookingapp.ui.view
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
@@ -48,14 +47,6 @@ class StartActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        FirebaseMessaging.getInstance()
-            .token
-            .addOnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    Log.d("@@",task.result)
-                }
-            }
-
         super.onCreate(savedInstanceState)
         _binding =
             DataBindingUtil.setContentView(this@StartActivity, R.layout.activity_start)
