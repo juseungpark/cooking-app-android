@@ -8,16 +8,16 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/main_color_3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_color_3"
         tools:context=".ui.view.StartActivity">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="240dp"
             android:layout_height="240dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="96dp"
             android:src="@drawable/img_cook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,25 +49,37 @@
 
         <!--Google Sign In 부분-->
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btn_googleSignIn"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_container_signin"
             android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="@+id/btn_login"
             app:layout_constraintStart_toStartOf="@+id/btn_login"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login"
-            tools:ignore="MissingConstraints"></com.google.android.gms.common.SignInButton>
+            app:layout_constraintTop_toBottomOf="@+id/btn_login">
 
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_googleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints"></com.google.android.gms.common.SignInButton>
+        </androidx.cardview.widget.CardView>
         <Button
             android:id="@+id/btn_login"
             android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_margin="16dp"
             android:background="@color/main_color_6"
-            android:text="로그인"
             android:inputType="textEmailAddress"
+            android:text="로그인"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="@+id/et_email"
             app:layout_constraintStart_toStartOf="@+id/et_email"
-            app:layout_constraintTop_toBottomOf="@+id/et_pwassword" />
+            app:layout_constraintTop_toBottomOf="@+id/et_pwassword"/>
 
 
         <Button
@@ -87,23 +99,25 @@
             android:id="@+id/tv_loginguest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="게스트로 로그인"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/btn_googleSignIn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_container_signin"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/btn_googleSignIn"
-            app:layout_constraintTop_toBottomOf="@+id/btn_googleSignIn" />
+            app:layout_constraintStart_toStartOf="@+id/btn_container_signin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_container_signin" />
 
         <TextView
             android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="회원가입"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/btn_googleSignIn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_container_signin"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/btn_googleSignIn"
-            app:layout_constraintTop_toBottomOf="@+id/btn_googleSignIn" />
+            app:layout_constraintStart_toStartOf="@+id/btn_container_signin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_container_signin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

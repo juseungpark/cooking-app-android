@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setSupportActionBar(binding.topAppBar)
 
         val db = RecipeDatabase.getInstance(this)
         val recipeRepositoryImpl = RecipeRepositoryImpl(db)
