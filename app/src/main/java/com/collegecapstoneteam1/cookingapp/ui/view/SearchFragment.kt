@@ -51,8 +51,6 @@ class SearchFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             var rcpNm = binding.etSearch.text.toString()
             viewModel.searchCookingsPaging(rcpNm)
-
-
         }
 
 //        viewModel.searchResult.observe(viewLifecycleOwner) { response ->

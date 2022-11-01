@@ -1,7 +1,11 @@
 package com.collegecapstoneteam1.cookingapp.ui.view
 
+import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +21,8 @@ import com.collegecapstoneteam1.cookingapp.data.repository.RecipeRepositoryImpl
 import com.collegecapstoneteam1.cookingapp.databinding.ActivityMainBinding
 import com.collegecapstoneteam1.cookingapp.ui.viewmodel.MainViewModel
 import com.collegecapstoneteam1.cookingapp.ui.viewmodel.MainViewModelProviderFactory
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         _binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(binding.topAppBar)
