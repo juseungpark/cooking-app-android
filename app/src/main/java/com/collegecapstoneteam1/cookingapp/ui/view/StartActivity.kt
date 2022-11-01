@@ -1,7 +1,6 @@
 package com.collegecapstoneteam1.cookingapp.ui.view
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +23,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 
 class StartActivity : AppCompatActivity() {
     private var _binding: ActivityStartBinding? = null
