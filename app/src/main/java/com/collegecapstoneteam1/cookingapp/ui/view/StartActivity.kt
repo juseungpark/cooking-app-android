@@ -53,38 +53,37 @@ class StartActivity : AppCompatActivity() {
         binding.lifecycleOwner = this@StartActivity
 
 
-        val email = binding.etEmail.text
-        val pw = binding.etPwassword.text
+//        val email = binding.etEmail.text
+//        val pw = binding.etPwassword.text
 
         setResultSignUp()
 
         with(binding){
-            btnLogin.setOnClickListener {
-                loginEmail(email.toString(), pw.toString())
-            }
+//            btnLogin.setOnClickListener {
+//                loginEmail(email.toString(), pw.toString())
+//            }
 
             // 구글 로그인
             btnGoogleSignIn.setOnClickListener{
                 loginWithGoogle()
             }
 
-            //게스트로 로그인
-            tvLoginguest.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-            tvLoginguest.setOnClickListener {
-
+//            //게스트로 로그인
+//            btnLoginguest.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            btnLoginguest.setOnClickListener {
                 startActivity(Intent(this@StartActivity, MainActivity::class.java))
                 finish()
             }
-
-            //회원가입
-            tvSignup.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-            tvSignup.setOnClickListener {
-                regEmail(email.toString(), pw.toString())
-            }
-
-            btnLogout.setOnClickListener {
-                signOut()
-            }
+//
+//            //회원가입
+//            tvSignup.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+//            tvSignup.setOnClickListener {
+//                regEmail(email.toString(), pw.toString())
+//            }
+//
+//            btnLogout.setOnClickListener {
+//                signOut()
+//            }
         }
         // 로그인
 

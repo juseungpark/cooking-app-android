@@ -16,31 +16,49 @@
         android:background="@color/white"
         tools:context=".ui.view.MainActivity">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                app:titleCentered="true"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+
+        </com.google.android.material.appbar.AppBarLayout>
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="?attr/actionBarSize"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout" >
 
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/cookingsearch_nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                app:defaultNavHost = "true"
-                app:navGraph="@navigation/cooking_nav_graph"/>
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/cooking_nav_graph" />
 
 
         </FrameLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

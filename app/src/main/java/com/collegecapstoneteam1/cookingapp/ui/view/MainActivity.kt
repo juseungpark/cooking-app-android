@@ -37,7 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        _binding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setSupportActionBar(binding.topAppBar)
 
         val db = RecipeDatabase.getInstance(this)
         val recipeRepositoryImpl = RecipeRepositoryImpl(db)
