@@ -72,6 +72,7 @@ class StartActivity : AppCompatActivity() {
 //            btnLoginguest.paintFlags = Paint.UNDERLINE_TEXT_FLAG
             btnLoginguest.setOnClickListener {
                 startActivity(Intent(this@StartActivity, MainActivity::class.java))
+                overridePendingTransition(R.anim.slide_to_up_enter,R.anim.slide_to_up_exit)
                 finish()
             }
 //
