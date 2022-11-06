@@ -98,7 +98,7 @@ class SearchFragment : Fragment() {
             addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
-                    DividerItemDecoration.VERTICAL
+                    0
                 )
             )
 

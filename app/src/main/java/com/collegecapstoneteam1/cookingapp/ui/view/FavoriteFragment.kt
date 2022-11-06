@@ -55,7 +55,7 @@ class FavoriteFragment : Fragment() {
             addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
-                    DividerItemDecoration.VERTICAL
+                    0
                 )
             )
 
