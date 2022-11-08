@@ -29,7 +29,6 @@ class StartActivity : AppCompatActivity() {
     private var _binding: ActivityStartBinding? = null
     private val binding get() = _binding!!
 
-
     private val auth by lazy{
         FirebaseAuth.getInstance()
     }
@@ -75,6 +74,12 @@ class StartActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.slide_to_up_enter,R.anim.slide_to_up_exit)
                 finish()
             }
+
+            btnEmailSignIn.setOnClickListener {
+                startActivity(Intent(this@StartActivity, LoginActivity::class.java))
+                finish()
+            }
+
 //
 //            //회원가입
 //            tvSignup.paintFlags = Paint.UNDERLINE_TEXT_FLAG
@@ -86,9 +91,6 @@ class StartActivity : AppCompatActivity() {
 //                signOut()
 //            }
         }
-        // 로그인
-
-
         setContentView(binding.root)
     }
 
@@ -164,67 +166,6 @@ class StartActivity : AppCompatActivity() {
         // Firebase sign out
         auth.signOut()
         googleSignClient.revokeAccess().addOnCompleteListener(this@StartActivity) {
-
         }
     }
-
-    // ------------------------ 구글 관련 end ------------------------------
-
-    // ------------------------ 이메일 관련 start ------------------------------
-    fun loginEmail(email: String, pw: String){
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pw)){
-            Toast.makeText(this@StartActivity, "아이디 및 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-        } else{
-            auth?.signInWithEmailAndPassword(email, pw)?.addOnCompleteListener{
-                    task ->
-
-                if(task.isSuccessful){
-                    moveMainPage(task.result?.user)
-                } else{
-                    //로그인 실패
-                    if (pw.length < 6) {
-                        Toast.makeText(this@StartActivity, "비밀번호는 6자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(this@StartActivity, "아이디 및 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-            }
-        }
-    }
-
-    fun regEmail(email: String, pw: String){
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pw)){
-            Toast.makeText(this@StartActivity, "아이디 및 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-        } else {
-            auth?.createUserWithEmailAndPassword(email, pw)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // 회원가입 완료 -> 바로 로그인
-                        moveMainPage(task.result?.user)
-                    } else if (task.exception?.message.isNullOrEmpty()) {
-                        // 회원가입 실패
-                        //Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-                        Toast.makeText(this@StartActivity, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
-                    } else {
-                        // 같은 아이디가 있을 시 로그인 시도
-                        loginEmail(email, pw)
-                    }
-                }
-        }
-    }
-    // ------------------------ 이메일 관련 end ------------------------------
-
-    // 로그인 성공시 다음페이지로 넘어가는 함수
-    fun moveMainPage(user:FirebaseUser?){
-        // 파이어베이스 유저 상태가 있을 경우에만 넘어감
-        if(user != null){
-            val nextIntent = Intent(this@StartActivity, MainActivity::class.java)
-            nextIntent.putExtra("user", user)
-            startActivity(nextIntent)
-            finish()
-        }
-    }
-
 }
