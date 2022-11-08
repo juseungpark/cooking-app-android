@@ -45,12 +45,12 @@ class MainActivity : AppCompatActivity() {
         val db = RecipeDatabase.getInstance(this)
         val recipeRepositoryImpl = RecipeRepositoryImpl(db)
         val factory = MainViewModelProviderFactory(recipeRepositoryImpl)
-        viewModel = ViewModelProvider(this,factory)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         setupJetpackNavigation()
 
         if (savedInstanceState == null) {
-            binding.bottomNavigationView.selectedItemId = R.id.fragment_search
+            binding.bottomNavigationView.selectedItemId = R.id.fragment_home
         }
 
         binding.viewmodel = viewModel
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setupJetpackNavigation(){
+    private fun setupJetpackNavigation() {
         val host = supportFragmentManager
             .findFragmentById(R.id.cookingsearch_nav_host_fragment) as NavHostFragment? ?: return
         navController = host.navController
@@ -67,7 +67,10 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             //navController.graph
             setOf(
-                R.id.fragment_search, R.id.fragment_favorite, R.id.fragment_settings
+                R.id.fragment_home,
+                R.id.fragment_search,
+                R.id.fragment_favorite,
+                R.id.fragment_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
