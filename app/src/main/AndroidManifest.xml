@@ -39,8 +39,6 @@
             android:name=".ui.view.StartActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -55,6 +53,16 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+<!--스플래시 화면 구성-->
+        <activity android:name=".ui.view.SplashActivity"
+            android:theme="@style/Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
