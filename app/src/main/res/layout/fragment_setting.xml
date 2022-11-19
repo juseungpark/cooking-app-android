@@ -14,12 +14,27 @@
         tools:context=".ui.view.SettingsFragment">
 
         <TextView
+            android:id="@+id/signIn_signUp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/settings"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="로그인 / 회원가입"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
