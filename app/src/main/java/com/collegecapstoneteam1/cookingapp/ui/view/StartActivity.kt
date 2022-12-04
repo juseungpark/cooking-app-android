@@ -155,7 +155,6 @@ class StartActivity : AppCompatActivity() {
         // Firebase sign out
         auth.signOut()
         // Google sign out
-
         googleSignClient.signOut().addOnCompleteListener(this@StartActivity) {
             Toast.makeText(this@StartActivity, "로그아웃", Toast.LENGTH_SHORT).show()
         }

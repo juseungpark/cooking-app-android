@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.collegecapstoneteam1.cookingapp.R
 import com.collegecapstoneteam1.cookingapp.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -71,10 +73,6 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
-
-
-
-
         setContentView(binding.root)
     }
 
@@ -150,7 +148,7 @@ class LoginActivity : AppCompatActivity() {
             Log.d("로그인한 유저의 프로필 사진의 주소", photoUrl)
 
             val nextIntent = Intent(this@LoginActivity, MainActivity::class.java)
-            nextIntent.putExtra("user", account)
+            nextIntent.putExtra("user", email)
             startActivity(nextIntent)
             finish()
 
@@ -171,9 +169,9 @@ class LoginActivity : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?){
         // 파이어베이스 유저 상태가 있을 경우에만 넘어감
         if(user != null){
-            val nextIntent = Intent(this@LoginActivity, MainActivity::class.java)
-            nextIntent.putExtra("user", user)
-            startActivity(nextIntent)
+//            val nextIntent = Intent(this@LoginActivity, MainActivity::class.java)
+//            nextIntent.putExtra("user", user)
+//            startActivity(nextIntent)
             finish()
         }
     }

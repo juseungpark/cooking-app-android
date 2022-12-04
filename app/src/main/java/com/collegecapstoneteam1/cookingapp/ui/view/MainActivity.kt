@@ -2,14 +2,17 @@ package com.collegecapstoneteam1.cookingapp.ui.view
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -35,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    var emailId : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         val factory = MainViewModelProviderFactory(recipeRepositoryImpl)
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
+        emailId = intent.getStringExtra("user")
+        Log.d("메인액티비티", "$emailId")
+
+
         setupJetpackNavigation()
 
         if (savedInstanceState == null) {
@@ -55,9 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
-
     }
-
     private fun setupJetpackNavigation() {
         val host = supportFragmentManager
             .findFragmentById(R.id.cookingsearch_nav_host_fragment) as NavHostFragment? ?: return
